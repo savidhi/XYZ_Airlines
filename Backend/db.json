@@ -1,0 +1,70 @@
+{
+  "airlines": [
+    {
+      "id": "CAD-101",
+      "airlinesImage": "CanadianAirlines.jpg",
+      "airlinesName": "Canadian Airlines",
+      "status": "Running",
+      "source": "Toronto",
+      "destination": "Ottawa",
+      "fare": 543
+    },
+    {
+      "id": "IND-101",
+      "airlinesImage": "IndianAirlines.jpg",
+      "airlinesName": "Indian Airlines",
+      "status": "Running",
+      "source": "New Delhi",
+      "destination": "Mumbai",
+      "fare": 300
+    },
+    {
+      "id": "USA-101",
+      "airlinesImage": "americanAirlines.jpg",
+      "airlinesName": "American Airlines",
+      "status": "Running",
+      "source": "Los Angeles",
+      "destination": "San Fransisco",
+      "fare": 699
+    },
+    {
+      "id": "USA-102",
+      "airlinesImage": "americanAirlines.jpg",
+      "airlinesName": "American Airlines",
+      "status": "Cancelled",
+      "source": "Dallas",
+      "destination": "Boston",
+      "fare": 249
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1001",
+      "airlinesId": "IND-101",
+      "customerName": "John Doe",
+      "dateOfJourney": "2021-05-05",
+      "noOfTickets": 2
+    },
+    {
+      "id": "1002",
+      "airlinesId": "USA-101",
+      "customerName": "Jack Dcousta",
+      "dateOfJourney": "2021-02-01",
+      "noOfTickets": 3
+    },
+    {
+      "id": "1003",
+      "airlinesId": "CAD-101",
+      "customerName": "Emily Carter",
+      "dateOfJourney": "2021-09-09",
+      "noOfTickets": 4
+    },
+    {
+      "id": "1fd2",
+      "airlinesId": "CAD-101",
+      "customerName": "mb vbn vnb",
+      "noOfTickets": 4,
+      "dateOfJourney": "2025-01-30"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<h2 class="textStyle text-center">Welcome to Infy Airlines</h2>
+
+<div class="row" *ngIf="airlinesArray?.length">
+    <!-- Iterate over the airlinesArray to render the cards for all the airlines -->
+    <div class="col-md-3 mt-3" id="airlineCard" *ngFor="let airline of airlinesArray">
+        <div class=" p-3 card shadow" style="opacity: 0.8;">
+            
+            <!-- Display the airline image using airlinesImage property and set alt text to airlinesId -->
+            <img 
+                id="airlineImage" 
+                height="200px" 
+                class="card-img-top" 
+                [src]="'assets/' + airline.airlinesImage" alt="{{ airline.id }}">
+            
+            <div class="card-body text text-center">
+                <h6 id="cardTitle">
+                    <!-- Display the airline name and airline ID -->
+                    {{ airline.airlinesName }} (ID: {{ airline.id }})
+                </h6>
+                <div class="cardData">
+                    <h6 id="fare">
+                        Fare: {{ airline.fare || 0 | currency:'USD' }}
+                    </h6>
+                </div>
+                <!-- 
+                    1. Disable the button if the airline is Cancelled.
+                    2. Invoke the showBookingForm method with the airline's ID.
+                -->
+                <button 
+                    class="btn btn-outline-dark btn-sm" 
+                    id="bookTicket" 
+                    [disabled]="airline.isCancelled" 
+                    (click)="showBookingForm(airline.id)">
+                    Book Ticket
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!airlinesArray?.length">
+    <h1 class="text text-center" id="errorMessage">
+        No airlines available at the moment. Please try again later.
+    </h1>
+</div>

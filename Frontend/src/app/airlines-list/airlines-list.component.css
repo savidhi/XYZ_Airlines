@@ -1,0 +1,33 @@
+.card:hover {
+    box-shadow: 10px;
+    transform: scale(1.05);
+}
+
+.card-body {
+    font-family: cursive;
+}
+
+#cardTitle {
+    background-color: black;
+    color: white;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.cardData {
+    background-color: rgb(44, 113, 122);
+    color: white;
+}
+
+.card-img-top {
+    padding: 18px
+}
+
+.textStyle {
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 5px 5px 5px rgb(163, 151, 151);
+    text-align: center;
+    margin-top: 10px;
+}
