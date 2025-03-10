@@ -1,0 +1,159 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--background-gradient);
+}
+
+.navbar {
+    background: var(--header-gradient);
+    padding: 1rem 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav app-booking-popup {
+    margin-left: 1rem;
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link:active {
+    transform: translateY(0);
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    margin: 0 0.5rem;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-nav app-booking-popup ::ng-deep .nav-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: var(--transition-default);
+}
+
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+    flex: 1 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.footer {
+    background: var(--header-gradient);
+    color: #ffffff;
+    padding: 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-text {
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .text-md-end {
+        text-align: center !important;
+        margin-top: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-brand {
+        transition: none;
+    }
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    margin: 0 0.5rem;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.navbar-nav .nav-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}

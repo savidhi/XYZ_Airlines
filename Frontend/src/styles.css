@@ -1,4 +1,133 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Variables */
+:root {
+    --primary-color: #0a191b;
+    --primary-light: #1c3f45;
+    --secondary-color: #0056b3;
+    --background-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --header-gradient: linear-gradient(135deg, #0a191b 0%, #1c3f45 100%);
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    --transition-default: all 0.3s ease;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Common Card Styles */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: none;
+    transition: var(--transition-default);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: var(--header-gradient);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: 2rem;
+    background: #f8f9fa;
+}
+
+/* Form Controls */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: var(--transition-default);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(10, 25, 27, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: var(--transition-default);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-outline-dark, .btn-outline-success {
+    border-width: 2px;
+    background: linear-gradient(45deg, var(--primary-color) 50%, transparent 50%);
+    background-size: 250% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease;
+}
+
+.btn-outline-dark:hover:not(:disabled),
+.btn-outline-success:hover:not(:disabled) {
+    background-position: left bottom;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: none;
+}
+
+.modal-header {
+    background: var(--header-gradient);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem;
+    border-bottom: none;
+}
+
+.modal-body {
+    padding: 2rem;
+    background: #f8f9fa;
+}
+
+/* Navigation */
+.nav-link {
+    transition: var(--transition-default);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+    background-color: rgba(0, 86, 179, 0.1);
+}
+
+.nav-link.active {
+    color: var(--secondary-color);
+    background-color: rgba(0, 86, 179, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card, .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

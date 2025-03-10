@@ -10,6 +10,15 @@
       "fare": 543
     },
     {
+      "id": "CAD-102",
+      "airlinesImage": "CanadianAirlines.jpg",
+      "airlinesName": "Canadian Airlines",
+      "status": "Running",
+      "source": "Vancouver",
+      "destination": "Montreal",
+      "fare": 789
+    },
+    {
       "id": "IND-101",
       "airlinesImage": "IndianAirlines.jpg",
       "airlinesName": "Indian Airlines",
@@ -19,12 +28,21 @@
       "fare": 300
     },
     {
+      "id": "IND-102",
+      "airlinesImage": "IndianAirlines.jpg",
+      "airlinesName": "Indian Airlines",
+      "status": "Running",
+      "source": "Bangalore",
+      "destination": "Chennai",
+      "fare": 250
+    },
+    {
       "id": "USA-101",
       "airlinesImage": "americanAirlines.jpg",
       "airlinesName": "American Airlines",
       "status": "Running",
       "source": "Los Angeles",
-      "destination": "San Fransisco",
+      "destination": "San Francisco",
       "fare": 699
     },
     {
@@ -35,36 +53,77 @@
       "source": "Dallas",
       "destination": "Boston",
       "fare": 249
+    },
+    {
+      "id": "USA-103",
+      "airlinesImage": "americanAirlines.jpg",
+      "airlinesName": "American Airlines",
+      "status": "Running",
+      "source": "New York",
+      "destination": "Chicago",
+      "fare": 450
+    },
+    {
+      "id": "EUR-101",
+      "airlinesImage": "lufthansa.jpg",
+      "airlinesName": "Lufthansa",
+      "status": "Running",
+      "source": "Berlin",
+      "destination": "Paris",
+      "fare": 599
+    },
+    {
+      "id": "EUR-102",
+      "airlinesImage": "britishAirways.jpg",
+      "airlinesName": "British Airways",
+      "status": "Running",
+      "source": "London",
+      "destination": "Madrid",
+      "fare": 479
     }
   ],
   "bookings": [
     {
-      "id": "1001",
-      "airlinesId": "IND-101",
-      "customerName": "John Doe",
-      "dateOfJourney": "2021-05-05",
+      "id": "BK-1001",
+      "airlinesId": "EUR-101",
+      "customerName": "Emma Thompson",
+      "dateOfJourney": "2024-04-15",
       "noOfTickets": 2
     },
     {
-      "id": "1002",
+      "id": "BK-1002",
       "airlinesId": "USA-101",
-      "customerName": "Jack Dcousta",
-      "dateOfJourney": "2021-02-01",
+      "customerName": "Michael Chen",
+      "dateOfJourney": "2024-05-01",
       "noOfTickets": 3
     },
     {
-      "id": "1003",
-      "airlinesId": "CAD-101",
-      "customerName": "Emily Carter",
-      "dateOfJourney": "2021-09-09",
+      "id": "BK-1003",
+      "airlinesId": "IND-102",
+      "customerName": "Priya Sharma",
+      "dateOfJourney": "2024-04-20",
+      "noOfTickets": 1
+    },
+    {
+      "id": "BK-1004",
+      "airlinesId": "CAD-102",
+      "customerName": "James Wilson",
+      "dateOfJourney": "2024-06-10",
       "noOfTickets": 4
     },
     {
-      "id": "1fd2",
-      "airlinesId": "CAD-101",
-      "customerName": "mb vbn vnb",
+      "id": "BK-1005",
+      "airlinesId": "EUR-102",
+      "customerName": "Sophie Martin",
+      "dateOfJourney": "2024-05-15",
+      "noOfTickets": 2
+    },
+    {
+      "id": "BK-1006",
+      "airlinesId": "USA-101",
+      "customerName": "Savidhi Mittal",
       "noOfTickets": 4,
-      "dateOfJourney": "2025-01-30"
+      "dateOfJourney": "2025-03-12"
     }
   ]
 }

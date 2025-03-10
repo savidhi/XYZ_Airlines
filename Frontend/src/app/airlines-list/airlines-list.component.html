@@ -1,7 +1,22 @@
-<h2 class="textStyle text-center">Welcome to Infy Airlines</h2>
+<h2 class="textStyle text-center">Welcome to XYZ Airlines</h2>
 
+<!-- Show loading message -->
+<div *ngIf="isLoading" class="text-center">
+    <h3>Loading airlines...</h3>
+</div>
+
+<!-- Show error message if there's an error -->
+<div *ngIf="errorMessage" class="text-center text-danger">
+    <h3>{{ errorMessage }}</h3>
+</div>
+
+<!-- Show no airlines message -->
+<div *ngIf="!isLoading && !errorMessage && airlinesArray.length === 0" class="text-center">
+    <h1>No airlines available at the moment. Please try again later.</h1>
+</div>
+
+<!-- Show airlines list -->
 <div class="row" *ngIf="airlinesArray?.length">
-    <!-- Iterate over the airlinesArray to render the cards for all the airlines -->
     <div class="col-md-3 mt-3" id="airlineCard" *ngFor="let airline of airlinesArray">
         <div class=" p-3 card shadow" style="opacity: 0.8;">
             
@@ -29,17 +44,11 @@
                 <button 
                     class="btn btn-outline-dark btn-sm" 
                     id="bookTicket" 
-                    [disabled]="airline.isCancelled" 
+                    [disabled]="airline.status === 'Cancelled'" 
                     (click)="showBookingForm(airline.id)">
                     Book Ticket
                 </button>
             </div>
         </div>
     </div>
-</div>
-
-<div *ngIf="!airlinesArray?.length">
-    <h1 class="text text-center" id="errorMessage">
-        No airlines available at the moment. Please try again later.
-    </h1>
 </div>

@@ -1,0 +1,268 @@
+.card {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: cardFadeIn 0.5s ease-out;
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: #0a191b;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #0a191b;
+    box-shadow: 0 0 0 0.2rem rgba(10, 25, 27, 0.25);
+    transform: translateY(-2px);
+}
+
+.form-control:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+input[type="date"] {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success {
+    border-width: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    background: none;
+    color: #0a191b;
+    border-color: #0a191b;
+    background: linear-gradient(45deg, #0a191b 50%, transparent 50%);
+    background-size: 250% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease;
+}
+
+.btn-outline-success:hover:not(:disabled) {
+    background-position: left bottom;
+    color: #ffffff;
+    transform: translateY(-2px);
+    border-color: #050c0d;
+}
+
+.btn-link {
+    color: #0a191b;
+}
+
+.btn-link::after {
+    background-color: #0a191b;
+}
+
+.form-control {
+    background-color: rgba(44, 113, 122, 0.1);
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #0a191b;
+    box-shadow: 0 0 0 0.2rem rgba(44, 113, 122, 0.25);
+    background-color: #fff;
+}
+
+.form-control:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+input[type="date"] {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success {
+    border-width: 2px;
+    background: linear-gradient(45deg, #0a191b 50%, transparent 50%);
+    background-size: 250% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease;
+}
+
+.btn-outline-success:hover:not(:disabled) {
+    background-position: left bottom;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.btn-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0a191b;
+    transition: width 0.3s ease;
+}
+
+.btn-link:hover::after {
+    width: 100%;
+}
+
+.text-success, .text-danger {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 1rem;
+    animation: messageFadeIn 0.3s ease;
+}
+
+.text-success {
+    background-color: rgba(10, 25, 27, 0.1);
+    color: #0a191b;
+    font-weight: 500;
+}
+
+.text-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    font-size: 0.875rem;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes messageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .btn,
+    .form-control,
+    .text-success,
+    .text-danger {
+        animation: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 0.5rem;
+    }
+    .card-header {
+        padding: 1rem;
+    }
+    .card-body {
+        padding: 1rem;
+    }
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .form-control {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        margin: 1rem;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+@media print {
+    .card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    
+    .btn-outline-success {
+        display: none;
+    }
+}

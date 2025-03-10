@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AirlinesListComponent } from './airlines-list/airlines-list.component';
 import { BookTicketComponent } from './book-ticket/book-ticket.component';
+import { BookingsListComponent } from './bookings-list/bookings-list.component';
 
 const routes: Routes = [
   {
     path: 'airlines',
     component: AirlinesListComponent // Loads AirlinesListComponent for '/airlines'
+  },
+  {
+    path: 'bookings',
+    component: BookingsListComponent // Loads BookingsListComponent for '/bookings'
   },
   {
     path: 'book-ticket/:airlinesId',
@@ -27,4 +32,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

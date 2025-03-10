@@ -1,33 +1,92 @@
-.card:hover {
-    box-shadow: 10px;
-    transform: scale(1.05);
+/* ... existing card styles ... */
+
+/* Enhanced button styles */
+.btn-outline-dark {
+    border-width: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
 }
 
-.card-body {
-    font-family: cursive;
-}
-
-#cardTitle {
-    background-color: black;
+.btn-outline-dark:hover:not(:disabled) {
+    background-color: #000;
     color: white;
+    transform: translateY(-2px);
 }
 
-button:disabled {
-    cursor: not-allowed;
+/* Card enhancements */
+.card {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    border: none;
 }
 
+/* Price tag style */
 .cardData {
-    background-color: rgb(44, 113, 122);
-    color: white;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+    padding: 1rem 1.5rem;
 }
 
+/* Image container improvements */
 .card-img-top {
-    padding: 18px
+    background-color: rgba(44, 113, 122, 0.1);
+    border-radius: 4px;
 }
 
-.textStyle {
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 5px 5px 5px rgb(163, 151, 151);
+/* Loading animation */
+@keyframes cardPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.card.loading {
+    animation: cardPulse 1.5s infinite;
+}
+
+/* Error state */
+.error-state {
+    color: #dc3545;
+    padding: 2rem;
     text-align: center;
-    margin-top: 10px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* Success badge */
+.badge-available {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+/* Larger screens */
+@media (min-width: 992px) {
+    .card {
+        margin: 1rem;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+/* Print styles */
+@media print {
+    .card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    
+    .btn-outline-dark {
+        display: none;
+    }
 }

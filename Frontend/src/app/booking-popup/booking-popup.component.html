@@ -1,0 +1,98 @@
+<div class="modal-header">
+    <h4 class="modal-title">Book Your Flight</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="bookingForm" (ngSubmit)="submitForm()" novalidate>
+        <div class="form-group mb-3">
+            <label for="airlinesId" class="form-label">Airlines</label>
+            <select class="form-control" 
+                    id="airlinesId" 
+                    formControlName="airlinesId"
+                    [class.is-invalid]="bookingForm.get('airlinesId')?.invalid && bookingForm.get('airlinesId')?.touched">
+                <option value="">Select Airline</option>
+                <option *ngFor="let airline of airlines" [value]="airline.id">
+                    {{airline.airlinesName}} - {{airline.source}} to {{airline.destination}}
+                </option>
+            </select>
+            <div class="invalid-feedback">
+                Please select an airline
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="customerName" class="form-label">Customer Name</label>
+            <input type="text" 
+                   id="customerName" 
+                   class="form-control" 
+                   formControlName="customerName"
+                   [class.is-invalid]="bookingForm.get('customerName')?.invalid && bookingForm.get('customerName')?.touched">
+            <div class="invalid-feedback">
+                <span *ngIf="bookingForm.get('customerName')?.errors?.['required']">
+                    Please enter your name
+                </span>
+                <span *ngIf="bookingForm.get('customerName')?.errors?.['pattern']">
+                    Please enter a valid name (letters and spaces only)
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="noOfTickets" class="form-label">Number of Tickets</label>
+            <input type="number" 
+                   id="noOfTickets" 
+                   class="form-control" 
+                   formControlName="noOfTickets"
+                   min="1" 
+                   max="6"
+                   [class.is-invalid]="bookingForm.get('noOfTickets')?.invalid && bookingForm.get('noOfTickets')?.touched">
+            <div class="invalid-feedback">
+                <span *ngIf="bookingForm.get('noOfTickets')?.errors?.['required']">
+                    Please enter number of tickets
+                </span>
+                <span *ngIf="bookingForm.get('noOfTickets')?.errors?.['min'] || bookingForm.get('noOfTickets')?.errors?.['max']">
+                    Please select between 1 and 6 tickets
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="dateOfJourney" class="form-label">Date of Journey</label>
+            <input type="date" 
+                   id="dateOfJourney" 
+                   class="form-control" 
+                   formControlName="dateOfJourney"
+                   [class.is-invalid]="bookingForm.get('dateOfJourney')?.invalid && bookingForm.get('dateOfJourney')?.touched">
+            <div class="invalid-feedback">
+                <span *ngIf="bookingForm.get('dateOfJourney')?.errors?.['required']">
+                    Please select a date
+                </span>
+                <span *ngIf="bookingForm.get('dateOfJourney')?.errors?.['dateError']">
+                    Please select a future date
+                </span>
+            </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" 
+            class="btn btn-primary" 
+            (click)="submitForm()"
+            [disabled]="bookingForm.invalid || isSubmitting">
+        {{ editMode ? 'Update' : 'Book Now' }}
+    </button>
+    <button type="button" 
+            class="btn btn-outline-secondary" 
+            (click)="activeModal.dismiss()">
+        Cancel
+    </button>
+</div>

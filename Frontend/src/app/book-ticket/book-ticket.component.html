@@ -1,88 +1,110 @@
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <div class="card shadow text-dark mt-4">
-            <div class="card-header">
-                <h4 class="text text-center">Book with us!!</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow text-dark mt-4">
+                <div class="card-header">
+                    <h2 class="h4 text-center mb-0">Book Your Flight</h2>
+                </div>
+                
+                <form [formGroup]="bookingForm" (ngSubmit)="bookTicket()" novalidate aria-label="Booking Form">
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="airlinesId" class="form-label">Airlines</label>
+                            <select *ngIf="showAirlinesDropdown" 
+                                class="form-control" 
+                                id="airlinesId" 
+                                formControlName="airlinesId"
+                                [class.is-invalid]="bookingForm.get('airlinesId')?.invalid && bookingForm.get('airlinesId')?.touched"
+                                aria-describedby="airlinesIdError">
+                                <option value="">Select Airline</option>
+                                <option *ngFor="let airline of airlines" [value]="airline.id">
+                                    {{airline.airlinesName}} - {{airline.source}} to {{airline.destination}}
+                                </option>
+                            </select>
+                            <input *ngIf="!showAirlinesDropdown" 
+                                type="text" 
+                                class="form-control" 
+                                id="airlinesId" 
+                                formControlName="airlinesId" 
+                                [readonly]="true">
+                            <div id="airlinesIdError" class="invalid-feedback" 
+                                *ngIf="bookingForm.get('airlinesId')?.invalid && bookingForm.get('airlinesId')?.touched">
+                                Please select an airline
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="customerName" class="form-label">Customer Name</label>
+                            <input type="text" id="customerName" class="form-control" formControlName="customerName" 
+                                [class.is-invalid]="bookingForm.get('customerName')?.invalid && bookingForm.get('customerName')?.touched"
+                                aria-describedby="customerNameError" />
+                            <div id="customerNameError" class="invalid-feedback" 
+                                *ngIf="bookingForm.get('customerName')?.dirty && bookingForm.get('customerName')?.invalid">
+                                <span *ngIf="bookingForm.get('customerName')?.errors?.['required']">
+                                    Please enter your name
+                                </span>
+                                <span *ngIf="bookingForm.get('customerName')?.errors?.['pattern']">
+                                    Please enter a valid name (letters and spaces only)
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="noOfTickets" class="form-label">Number of Tickets</label>
+                            <input type="number" id="noOfTickets" class="form-control" formControlName="noOfTickets" 
+                                min="1" max="6"
+                                [class.is-invalid]="bookingForm.get('noOfTickets')?.invalid && bookingForm.get('noOfTickets')?.touched"
+                                aria-describedby="noOfTicketsError" />
+                            <div id="noOfTicketsError" class="invalid-feedback" 
+                                *ngIf="bookingForm.get('noOfTickets')?.dirty && bookingForm.get('noOfTickets')?.invalid">
+                                <span *ngIf="bookingForm.get('noOfTickets')?.errors?.['required']">
+                                    Please enter number of tickets
+                                </span>
+                                <span *ngIf="bookingForm.get('noOfTickets')?.errors?.['min'] || bookingForm.get('noOfTickets')?.errors?.['max']">
+                                    Please select between 1 and 6 tickets
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="dateOfJourney" class="form-label">Date of Journey</label>
+                            <input type="date" id="dateOfJourney" class="form-control" formControlName="dateOfJourney"
+                                [class.is-invalid]="bookingForm.get('dateOfJourney')?.invalid && bookingForm.get('dateOfJourney')?.touched"
+                                aria-describedby="dateOfJourneyError" />
+                            <div id="dateOfJourneyError" class="invalid-feedback"
+                                *ngIf="bookingForm.get('dateOfJourney')?.dirty && bookingForm.get('dateOfJourney')?.invalid">
+                                <span *ngIf="bookingForm.get('dateOfJourney')?.errors?.['required']">
+                                    Please select a date
+                                </span>
+                                <span *ngIf="bookingForm.get('dateOfJourney')?.errors?.['dateError']">
+                                    Please select a future date
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-success" id="confirmBooking" type="submit"
+                                [disabled]="!bookingForm.valid">
+                                Confirm Booking
+                            </button>
+                            <button type="button" class="btn btn-link" id="checkOutFlights" (click)="redirectToAirlines()">
+                                View Other Flights
+                            </button>
+                        </div>
+
+                        <div class="mt-3">
+                            <div *ngIf="errorMessage" class="text-danger" id="errorMessage" role="alert">
+                                {{ errorMessage }}
+                            </div>
+                            <div *ngIf="successMessage" class="text-success" id="successMessage" role="alert">
+                                {{ successMessage }}
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!-- BIND THE FORM TO bookingForm instance and invoke bookTicket() method on form submission -->
-            <form [formGroup]="bookingForm" (ngSubmit)="bookTicket()">
-                <div class="card-body">
-
-                    <!-- airlinesId Field (Read-Only) -->
-                    <div class="form-group">
-                        <label for="airlinesId">Airlines ID</label>
-                        <input type="text" id="airlinesId" class="form-control" formControlName="airlinesId" [disabled]="true" />
-                    </div>
-
-                    <!-- customerName Field -->
-                    <div class="form-group">
-                        <label for="customerName">Customer Name</label>
-                        <input type="text" id="customerName" class="form-control" formControlName="customerName" />
-                        <div id="customerNameError" *ngIf="bookingForm.get('customerName')?.dirty && bookingForm.get('customerName')?.invalid">
-                            <small class="text-danger" *ngIf="bookingForm.get('customerName')?.errors?.['required']">
-                                Field Required
-                            </small>
-                            <small class="text-danger" *ngIf="bookingForm.get('customerName')?.errors?.['pattern']">
-                                Name can have only alphabets and white space
-                            </small>
-                        </div>
-                    </div>
-
-                    <!-- noOfTickets Field -->
-                    <div class="form-group">
-                        <label for="noOfTickets">Number of Tickets</label>
-                        <input type="number" id="noOfTickets" class="form-control" formControlName="noOfTickets" />
-                        <div id="noOfTicketsError" *ngIf="bookingForm.get('noOfTickets')?.dirty && bookingForm.get('noOfTickets')?.invalid">
-                            <small class="text-danger" *ngIf="bookingForm.get('noOfTickets')?.errors?.['required']">
-                                Field Required
-                            </small>
-                            <small class="text-danger" *ngIf="bookingForm.get('noOfTickets')?.errors?.['min']">
-                                At least 1 ticket must be booked
-                            </small>
-                            <small class="text-danger" *ngIf="bookingForm.get('noOfTickets')?.errors?.['max']">
-                                Maximum 6 tickets can be booked
-                            </small>
-                        </div>
-                    </div>
-
-                    <!-- dateOfJourney Field -->
-                    <div class="form-group">
-                        <label for="dateOfJourney">Date of Journey</label>
-                        <input type="date" id="dateOfJourney" class="form-control" formControlName="dateOfJourney" />
-                        <div id="dateOfJourneyError" *ngIf="bookingForm.get('dateOfJourney')?.dirty && bookingForm.get('dateOfJourney')?.invalid">
-                            <small class="text-danger" *ngIf="bookingForm.get('dateOfJourney')?.errors?.['required']">
-                                Field Required
-                            </small>
-                            <small class="text-danger" *ngIf="bookingForm.get('dateOfJourney')?.errors?.['dateError']">
-                                Journey Date can't be a past date
-                            </small>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Footer Section -->
-                <div class="card-footer text-center">
-                    <!-- Submit Button (Disabled Until Form is Valid) -->
-                    <button class="btn btn-outline-success btn-sm btn-block mr-4" id="confirmBooking" type="submit"
-                        [disabled]="!bookingForm.valid">
-                        Confirm Booking
-                    </button>
-
-                    <!-- Redirect to Airlines Page -->
-                    <button class="btn btn-link" id="checkOutFlights" (click)="redirectToAirlines()">
-                        Check out other flights?
-                    </button>
-
-                    <!-- Error and Success Messages -->
-                    <div *ngIf="errorMessage" class="text text-danger" id="errorMessage">
-                        {{ errorMessage }}
-                    </div>
-                    <div *ngIf="successMessage" class="text text-success" id="successMessage">
-                        {{ successMessage }}
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </div>
