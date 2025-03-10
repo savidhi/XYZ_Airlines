@@ -23,7 +23,13 @@
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-success, .text-danger {
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 1rem;
 }
 
 .form-control {

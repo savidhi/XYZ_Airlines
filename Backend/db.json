@@ -84,11 +84,11 @@
   ],
   "bookings": [
     {
-      "id": "BK-1001",
       "airlinesId": "EUR-101",
       "customerName": "Emma Thompson",
-      "dateOfJourney": "2024-04-15",
-      "noOfTickets": 2
+      "noOfTickets": 2,
+      "dateOfJourney": "2025-10-17",
+      "id": "BK-1001"
     },
     {
       "id": "BK-1002",
@@ -117,13 +117,6 @@
       "customerName": "Sophie Martin",
       "dateOfJourney": "2024-05-15",
       "noOfTickets": 2
-    },
-    {
-      "id": "BK-1006",
-      "airlinesId": "USA-101",
-      "customerName": "Savidhi Mittal",
-      "noOfTickets": 4,
-      "dateOfJourney": "2025-03-12"
     }
   ]
 }
